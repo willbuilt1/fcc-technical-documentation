@@ -7,3 +7,287 @@
     <link rel="stylesheet" href="styles.css" type="text/css">
     <script src=https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js type="text/javascript"></script>
 </head>
+
+<nav id="navbar">
+    <header>JS Array Methods</header>
+    <ul> 
+      <a class="nav-link" href="#Introduction" rel="internal"><li>Introduction</li></a>
+      <a class="nav-link" href="#Array.from()" rel="internal"><li>Array.from()</li></a>
+      <a class="nav-link" href="#Array.isArray()" rel="internal"><li>Array.isArray()</li></a>
+      <a class="nav-link" href="#Array.of()" rel="internal"><li>Array.of()</li></a> 
+      <a class="nav-link" href="#Array.prototype.concat()" rel="internal"><li>Array.prototype.concat()</li></a>
+      <a class="nav-link" href="#Array.prototype.copyWithin()" rel="internal"><li>Array.prototype.copyWithin()</li></a>
+      <a class="nav-link" href="#Array.prototype.entries()" rel="internal"><li>Array.prototype.entries()</li></a>
+      <a class="nav-link" href="#Array.prototype.every()" rel="internal"><li>Array.prototype.every()</li></a>
+      <a class="nav-link" href="#Array.prototype.fill()" rel="internal"><li>Array.prototype.fill()</li></a>
+      <a class="nav-link" href="#Array.prototype.filter()" rel="internal"><li>Array.prototype.filter()</li></a>
+      <a class="nav-link" href="#Array.prototype.find()" rel="internal"><li>Array.prototype.find()</li></a>
+      <a class="nav-link" href="#Array.prototype.findIndex()" rel="internal"><li>Array.prototype.findIndex()</li></a>
+      <a class="nav-link" href="#Array.prototype.forEach()" rel="internal"><li>Array.prototype.forEach()</li></a>
+      <a class="nav-link" href="#Array.prototype.includes()" rel="internal"><li>Array.prototype.includes()</li></a>
+      <a class="nav-link" href="#Array.prototype.indexOf()" rel="internal"><li>Array.prototype.indexOf()</li></a>
+      <a class="nav-link" href="#Array.prototype.join()" rel="internal"><li>Array.prototype.join()</li></a>
+      <a class="nav-link" href="#Array.prototype.keys()" rel="internal"><li>Array.prototype.keys()</li></a>
+      <a class="nav-link" href="#Array.prototype.lastIndexOf()" rel="internal"><li>Array.prototype.lastIndexOf()</li></a>
+      <a class="nav-link" href="#Array.prototype.map()" rel="internal"><li>Array.prototype.map()</li></a>
+      <a class="nav-link" href="#Array.prototype.pop()" rel="internal"><li>Array.prototype.pop()</li></a>
+      <a class="nav-link" href="#Array.prototype.push()" rel="internal"><li>Array.prototype.push()</li></a>
+      <a class="nav-link" href="#Array.prototype.reduce()" rel="internal"><li>Array.prototype.reduce()</li></a>
+      <a class="nav-link" href="#Array.prototype.reduceRight()" rel="internal"><li>Array.prototype.reduceRight()</li></a>
+      <a class="nav-link" href="#Array.prototype.reverse()" rel="internal"><li>Array.prototype.reverse()</li></a>
+      <a class="nav-link" href="#Array.prototype.shift()" rel="internal"><li>Array.prototype.shift()</li></a>
+      <a class="nav-link" href="#Array.prototype.slice()" rel="internal"><li>Array.prototype.slice()</li></a>
+      <a class="nav-link" href="#Array.prototype.some()" rel="internal"><li>Array.prototype.some()</li></a>
+      <a class="nav-link" href="#Array.prototype.sort()" rel="internal"><li>Array.prototype.sort()</li></a>
+      <a class="nav-link" href="#Array.prototype.splice()" rel="internal"><li>Array.prototype.splice()</li></a>
+      <a class="nav-link" href="#Array.prototype.toLocaleString()" rel="internal"><li>Array.prototype.toLocaleString()</li></a>
+      <a class="nav-link" href="#Array.prototype.toSource()" rel="internal"><li>Array.prototype.toSource()</li></a>
+      <a class="nav-link" href="#Array.prototype.toString()" rel="internal"><li>Array.prototype.toString()</li></a>
+      <a class="nav-link" href="#Array.prototype.unshift()" rel="internal"><li>Array.prototype.unshift()</li></a>
+      <a class="nav-link" href="#Array.prototype.values()" rel="internal"><li>Array.prototype.values()</li></a>
+    </ul>
+  </nav>
+  <main id="main-doc">
+    <section class="main-section" id="Introduction">
+      <header>Introduction</header>
+      <article>  
+        <p>JavaScript is a cross-platform, object-oriented scripting language. It is a small and lightweight language. Inside a host environment (for example, a web browser), JavaScript can be connected to the objects of its environment to provide programmatic control over them.</p>
+  
+  <p>JavaScript contains a standard library of objects, such as Array, Date, and Math, and a core set of language elements such as operators, control structures, and statements. Core JavaScript can be extended for a variety of purposes by supplementing it with additional objects; for example:</p>
+  
+  <li>Client-side JavaScript extends the core language by supplying objects to control a browser and its Document Object Model (DOM). For example, client-side extensions allow an application to place elements on an HTML form and respond to user events such as mouse clicks, form input, and page navigation.</li>
+  <li>Server-side JavaScript extends the core language by supplying objects relevant to running JavaScript on a server. For example, server-side extensions allow an application to communicate with a database, provide continuity of information from one invocation to another of the application, or perform file manipulations on a server.</li>
+        </article>
+      </section>
+    <section class="main-section" id="Array.from()">
+      <header>Array.from()</header>
+      <article>
+        <p>Array.from() lets you create Arrays from:
+
+           <li>objects (objects with a length property and indexed elements) or</li> 
+          <li>
+            iterable objects (objects where you can get its elements, such as Map and Set).
+          </li>
+      
+     <code>Array.from()</code> has an optional parameter <code>mapFn</code>, which allows you to execute a <code>map</code> function on each element of the array (or subclass object) that is being created. More clearly, <code>Array.from(obj, mapFn, thisArg)</code> has the same result as <code>Array.from(obj).map(mapFn, thisArg)</code>, except that it does not create an intermediate array. This is especially important for certain array subclasses, like typed arrays, since the intermediate array would necessarily have values truncated to fit into the appropriate type.
+      
+      The length property of the <code>from()</code> method is 1.
+      
+      In ES2015, the class syntax allows for sub-classing of both built-in and user defined classes; as a result, static methods such as Array.from are "inherited" by subclasses of Array and create new instances of the subclass, not Array.
+
+      <h2>Example:</h2>
+
+      <div class="codeblock">
+        console.log(Array.from('foo'));
+        // expected output: Array ["f", "o", "o"]
+
+        console.log(Array.from([1, 2, 3], x => x + x));
+        // expected output: Array [2, 4, 6]
+
+      </div>
+        </article>
+      </section>
+    <section class="main-section" id="Array.isArray()">
+      <header>Array.isArray()</header>
+      <article>
+          The <code>Array.isArray()</code> method determines whether the passed value is an <code>Array</code> as a boolean.
+          <h2>Example</h2>
+          <div class="codeblock">
+              Array.isArray([1, 2, 3]);  // true
+              Array.isArray({foo: 123}); // false
+              Array.isArray('foobar');   // false
+              Array.isArray(undefined);  // false
+          </div>    
+      </article>
+      </section>
+    <section class="main-section" id="Array.of()">
+      <header>Array.of()</header>
+      <article>
+      
+
+      The Array.of() method creates a new Array instance with a variable number of arguments, regardless of number or type of the arguments.
+
+      <p>The difference between Array.of() and the Array constructor is in the handling of integer arguments: Array.of(7) creates an array with a single element, 7, whereas Array(7) creates an empty array with a length property of 7 (Note: this implies an array of 7 empty slots, not slots with actual undefined values).</p>
+      </article>
+      </section>
+    <section class="main-section" id="Array.prototype.concat()">
+      <header>Array.prototype.concat()</header>
+      <article>
+      
+      </article>
+      </section>
+    <section class="main-section" id="Array.prototype.copyWithin()">
+      <header>Array.prototype.copyWithin()</header>
+      <article> 
+
+      </article>
+      </section>
+    <section class="main-section" id="Array.prototype.entries()">
+      <header>Array.prototype.entries()</header>
+     
+      </section>
+    <section class="main-section" id="Array.prototype.every()">
+      <header>Array.prototype.every()</header>
+      <article>
+  
+      </article>
+      </section>
+    <section class="main-section" id="Array.prototype.fill()">
+      <header>Array.prototype.fill()</header>
+      <article>
+       
+      </article>
+      </section>
+    <section class="main-section" id="Array.prototype.filter()">
+      <header>Array.prototype.filter()</header>
+      <article>
+      </article>
+      </section>
+    <section class="main-section" id="Array.prototype.find()">
+      <header>Array.prototype.find()</header>
+      <article>
+      </article>
+      </section>
+    <section class="main-section" id="Array.prototype.findIndex()">
+      <header>Array.prototype.findIndex()</header>
+      <article>
+  
+      </article>
+      </section>
+    <section class="main-section" id="Array.prototype.forEach()">
+      <header>Array.prototype.forEach()</header>
+      <article>
+        
+      </article>
+      </section>
+    <section class="main-section" id="Array.prototype.includes()">
+      <header>Array.prototype.includes()</header>
+      <article>
+ 
+      </article>
+      </section>
+
+    <section class="main-section" id="Array.prototype.indexOf()">
+      <header>Array.prototype.indexOf()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.join()">
+      <header>Array.prototype.join()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.keys()">
+      <header>Array.prototype.keys()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.lastIndexOf()">
+      <header>Array.prototype.lastIndexOf()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.map()">
+      <header>Array.prototype.map()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.pop()">
+      <header>Array.prototype.pop()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.push()">
+      <header>Array.prototype.push()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.reduce()">
+      <header>Array.prototype.reduce()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.reduceRight()">
+      <header>Array.prototype.reduceRight()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.reverse()">
+      <header>Array.prototype.reverse()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.shift()">
+      <header>Array.prototype.shift()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.slice()">
+      <header>Array.prototype.slice()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.some()">
+      <header>Array.prototype.some()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.sort()">
+      <header>Array.prototype.sort()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.splice()">
+      <header>Array.prototype.splice()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.toLocaleString()">
+      <header>Array.prototype.toLocaleString()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.toSource()">
+      <header>Array.prototype.toSource()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.toString()">
+      <header>Array.prototype.toString()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.unshift()">
+      <header>Array.prototype.unshift()</header>
+        <article>
+  
+        </article>
+    </section>
+    <section class="main-section" id="Array.prototype.values()">
+      <header>Array.prototype.values()</header>
+        <article>
+  
+        </article>
+    </section>
+    
+    id="Array.prototype.
+
+    ()()">
